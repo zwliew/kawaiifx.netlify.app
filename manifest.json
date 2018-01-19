@@ -1,0 +1,10 @@
+{
+  "name": "kawaiiFX",
+  "icons": [
+    {
+      "src": "img/logo.png",
+      "type": "image/png",
+      "sizes": "800x800"
+    }
+  ]
+}

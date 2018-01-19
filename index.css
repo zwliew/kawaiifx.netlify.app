@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+body {
+  font-family: Nunito, sans-serif;
+  text-align: center;
+}
+
+header {
+  overflow: hidden;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+#mayuri {
+  content:url('img/mayuri.png');
+  width: 268.5px;
+  height: 300px;
+}
