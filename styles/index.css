@@ -1,0 +1,19 @@
+body {
+  font-family: Nunito, Arial, sans-serif;
+  text-align: center;
+}
+
+header {
+  overflow: hidden;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+#mayuri {
+  content:url('../images/mayuri.png');
+  width: 268.5px;
+  height: 300px;
+}

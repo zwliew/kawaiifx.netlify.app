@@ -1,0 +1,15 @@
+{
+  "name": "kawaiiFX",
+  "short_name": "kawaiiFX",
+  "icons": [
+    {
+      "src": "images/icon.png",
+      "type": "image/png",
+      "sizes": "800x800"
+    }
+  ],
+  "theme_color": "#fff",
+  "display": "standalone",
+  "background_color": "#fff",
+  "start_url": "/kawaiiFX"
+}
