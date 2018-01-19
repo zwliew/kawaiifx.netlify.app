@@ -1,21 +1,8 @@
-const Mayuri = function(window, el) {
-  const player = el.querySelector('#player')
+const Koa = require('koa')
+const serve = require('koa-static')
 
-  function start() {
-    player.play()
-    el.classList.add('animated')
-    el.classList.add('tada')
-    window.setTimeout(stop, 1000)
-  }
+const server = new Koa()
 
-  function stop() {
-    el.classList.remove('animated')
-    el.classList.remove('tada')
-  }
+server.use(serve('client'))
 
-  el.addEventListener('click', start)
-}
-
-window.addEventListener('load', () => {
-  const mayuri = new Mayuri(window, document.getElementById('mayuri'))
-})
+server.listen(8080)

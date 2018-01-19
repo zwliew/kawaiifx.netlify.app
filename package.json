@@ -1,0 +1,17 @@
+{
+  "name": "kawaiiFX",
+  "version": "1.0.0",
+  "description": "kawaii sound effects",
+  "main": "index.js",
+  "author": "Zhao Wei Liew <zhaoweiliew@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "koa": "^2.4.1",
+    "koa-static": "^4.0.2"
+  },
+  "repository": "https://github.com/zwliew/kawaiiFX",
+  "private": true
+}

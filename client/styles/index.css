@@ -13,7 +13,7 @@ main {
 }
 
 #mayuri {
-  content:url('img/mayuri.png');
+  content:url('../img/mayuri.png');
   width: 268.5px;
   height: 300px;
 }
