@@ -1,4 +1,4 @@
-const Mayuri = function(window, el) {
+const Character = function(el) {
   const player = el.querySelector('#player')
 
   function start() {
@@ -17,7 +17,7 @@ const Mayuri = function(window, el) {
 }
 
 window.addEventListener('load', () => {
-  const mayuri = new Mayuri(window, document.getElementById('mayuri'))
+  const character = new Character(document.getElementById('character'))
 
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js')
