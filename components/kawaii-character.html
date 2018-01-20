@@ -1,0 +1,45 @@
+<template>
+  <style>
+  #image {
+    height: 300px;
+  }
+  </style>
+
+  <section>
+    <img id="image">
+    <audio id="player"></audio>
+  </section>
+</template>
+
+<script>
+  ((window, document) => {
+    const importer = document
+    const importee = importer.currentScript.ownerDocument
+    const template = importee.querySelector('template').content
+
+    class KawaiiCharacter extends HTMLElement {
+      constructor() {
+        super()
+      }
+
+      connectedCallback() {
+        const shadowRoot = this.attachShadow({ mode: 'open' })
+        const clone = importer.importNode(template, true)
+        shadowRoot.appendChild(clone)
+
+        const sound = this.getAttribute('sound')
+        this.audio = shadowRoot.getElementById('player')
+        this.audio.src = sound
+
+        const image = this.getAttribute('image')
+        this.imageElement = shadowRoot.getElementById('image')
+        this.imageElement.src = image
+      }
+
+      play() {
+        this.audio.play()
+      }
+    }
+    window.customElements.define('kawaii-character', KawaiiCharacter)
+  })(window, document)
+</script>

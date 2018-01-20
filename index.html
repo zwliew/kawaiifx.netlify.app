@@ -11,17 +11,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css" integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
     <link rel="stylesheet" href="styles/index.css">
+    <link rel="import" href="components/kawaii-character.html">
     <title>kawaiiFX</title>
   </head>
   <body>
     <header>
       <h1 id="heading" class="animated infinite pulse">(〃＾▽＾〃)</h2>
     </header>
-    <main>
-      <section id="character">
-        <img id="image" src="images/nico.png">
-        <audio src="sounds/nico.mp3" id="player"></audio>
-      </section>
+    <main id="char-container">
+      <kawaii-character id="character" sound="sounds/mayuri.mp3" image="images/mayuri.png"></kawaii-character>
     </main>
     <script src="scripts/index.js"></script>
   </body>
