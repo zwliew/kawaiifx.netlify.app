@@ -8,9 +8,7 @@ self.addEventListener('install', event => {
       'manifest.json',
       'scripts/index.js',
       'styles/index.css',
-      'images/icon.png',
-      'images/mayuri.png',
-      'sounds/tuturu.mp3'
+      'images/icon.png'
     ])
   }())
 })
