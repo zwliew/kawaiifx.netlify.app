@@ -10,7 +10,6 @@ body {
   padding: 0.1rem;
 }
 
-#character {
-  content: url('../images/mayuri.png');
+#image {
   height: 300px;
 }
