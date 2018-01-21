@@ -1,13 +1,13 @@
 <template>
   <style>
-  #image {
-    height: 20rem;
-  }
+    #image {
+      height: 20rem;
+    }
   </style>
 
   <section>
     <img id="image">
-    <audio id="player"></audio>
+    <audio id="audio"></audio>
   </section>
 </template>
 
@@ -18,15 +18,15 @@
     const template = importee.querySelector('template').content
 
     class KawaiiCharacter extends HTMLElement {
-      constructor() {
-        super()
-      }
-
       static get observedAttributes() {
         return [
           'image',
-          'sound'
+          'audio'
         ]
+      }
+
+      constructor() {
+        super()
       }
 
       connectedCallback() {
@@ -34,10 +34,10 @@
         const clone = importer.importNode(template, true)
         shadowRoot.appendChild(clone)
 
-        this.audioElement = shadowRoot.getElementById('player')
-        const sound = this.getAttribute('sound')
-        if (sound) {
-          this.audioElement.src = sound
+        this.audioElement = shadowRoot.getElementById('audio')
+        const audio = this.getAttribute('audio')
+        if (audio) {
+          this.audioElement.src = audio
         }
 
         this.imageElement = shadowRoot.getElementById('image')
@@ -50,10 +50,10 @@
       attributeChangedCallback(attrName, oldVal, newVal) {
         switch (attrName) {
           case 'image':
-            this.imageElement.src = newVal
+            if (this.imageElement) this.imageElement.src = newVal
             break
-          case 'sound':
-            this.audioElement.src = newVal
+          case 'audio':
+            if (this.audioElement) this.audioElement.src = newVal
             break
         }
       }

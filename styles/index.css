@@ -12,19 +12,3 @@ body {
 #char-container {
   margin: 1rem;
 }
-
-#previous {
-  height: 3rem;
-}
-
-#previous:hover {
-  cursor: pointer;
-}
-
-#next {
-  height: 3rem;
-}
-
-#next:hover {
-  cursor: pointer;
-}

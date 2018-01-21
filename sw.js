@@ -5,7 +5,7 @@ self.addEventListener('install', event => {
     const cache = await caches.open(CACHE_NAME)
     await cache.addAll([
       'index.html',
-      'manifest.json',
+      'data/manifest.json',
       'scripts/index.js',
       'styles/index.css',
       'images/icon.png'

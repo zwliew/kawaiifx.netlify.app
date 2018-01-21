@@ -5,26 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#fff">
     <meta name="description" content="kawaii sound effects">
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="data/manifest.json">
     <link rel="icon" href="images/icon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/5.0.0/sanitize.min.css" integrity="sha256-qNrgGqSO9Xu/fUg5vIi1xwbnOleSZRAidBaJ8U4qEy8=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css" integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
     <link rel="stylesheet" href="styles/index.css">
-    <link rel="import" href="components/kawaii-character.html">
+    <link rel="import" href="components/character-gallery.html">
     <title>kawaiiFX</title>
   </head>
   <body>
     <header>
       <h1 id="heading" class="animated infinite pulse">(〃＾▽＾〃)</h2>
     </header>
-    <main id="char-container">
-      <kawaii-character id="character"></kawaii-character>
+    <main>
+      <character-gallery characters="data/characters.json"></character-gallery>
     </main>
-    <section>
-      <img id="previous" src="images/previous.svg">
-      <img id="next" src="images/next.svg">
-    </section>
     <script src="scripts/index.js"></script>
   </body>
 </html>

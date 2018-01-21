@@ -1,0 +1,84 @@
+<link rel="import" href="kawaii-character.html">
+
+<template>
+  <style>
+    #container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #previous, #next {
+      height: 3rem;
+    }
+
+    #previous:hover, #next:hover {
+      cursor: pointer;
+    }
+  </style>
+
+  <section id="container">
+    <section id="character-container">
+      <kawaii-character id="character"></kawaii-character>
+    </section>
+    <section>
+      <img id="previous" src="images/previous.svg">
+      <img id="next" src="images/next.svg">
+    </section>
+  </section>
+</template>
+
+<script>
+  ((window, document) => {
+    const importer = document
+    const importee = importer.currentScript.ownerDocument
+    const template = importee.querySelector('template').content
+
+    class CharacterGallery extends HTMLElement {
+      constructor() {
+        super()
+      }
+
+      connectedCallback() {
+        const shadowRoot = this.attachShadow({ mode: 'open' })
+        const clone = importer.importNode(template, true)
+        shadowRoot.appendChild(clone)
+
+        this.characterContainer = shadowRoot.getElementById('character-container')
+        this.character = shadowRoot.getElementById('character')
+        this.previous = shadowRoot.getElementById('previous')
+        this.next = shadowRoot.getElementById('next')
+
+        this.character.addEventListener('click', this.play.bind(this))
+        this.previous.addEventListener('click', this.switchCharacter.bind(this, 0))
+        this.next.addEventListener('click', this.switchCharacter.bind(this, 1))
+
+        this.switchCharacter(0)
+      }
+
+      switchCharacter(index) {
+        switch (index) {
+          case 0:
+            this.character.setAttribute('image', 'images/nico.png')
+            this.character.setAttribute('audio', 'audio/nico.mp3')
+            break
+          case 1:
+            this.character.setAttribute('image', 'images/mayuri.png')
+            this.character.setAttribute('audio', 'audio/mayuri.mp3')
+            break
+        }
+      }
+
+      play() {
+        this.character.play()
+        this.characterContainer.classList.add('animated')
+        this.characterContainer.classList.add('tada')
+        setTimeout(() => {
+          this.characterContainer.classList.remove('animated')
+          this.characterContainer.classList.remove('tada')
+        }, 1000)
+      }
+    }
+    window.customElements.define('character-gallery', CharacterGallery)
+  })(window, document)
+</script>
