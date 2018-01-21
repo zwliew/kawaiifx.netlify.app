@@ -1,6 +1,5 @@
 body {
   font-family: Nunito, Arial, sans-serif;
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,4 +7,24 @@ body {
 
 #heading {
   padding: 0.1rem;
+}
+
+#char-container {
+  margin: 1rem;
+}
+
+#previous {
+  height: 3rem;
+}
+
+#previous:hover {
+  cursor: pointer;
+}
+
+#next {
+  height: 3rem;
+}
+
+#next:hover {
+  cursor: pointer;
 }

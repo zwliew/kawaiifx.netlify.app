@@ -1,7 +1,7 @@
 <template>
   <style>
   #image {
-    height: 300px;
+    height: 20rem;
   }
   </style>
 
@@ -22,22 +22,44 @@
         super()
       }
 
+      static get observedAttributes() {
+        return [
+          'image',
+          'sound'
+        ]
+      }
+
       connectedCallback() {
         const shadowRoot = this.attachShadow({ mode: 'open' })
         const clone = importer.importNode(template, true)
         shadowRoot.appendChild(clone)
 
+        this.audioElement = shadowRoot.getElementById('player')
         const sound = this.getAttribute('sound')
-        this.audio = shadowRoot.getElementById('player')
-        this.audio.src = sound
+        if (sound) {
+          this.audioElement.src = sound
+        }
 
-        const image = this.getAttribute('image')
         this.imageElement = shadowRoot.getElementById('image')
-        this.imageElement.src = image
+        const image = this.getAttribute('image')
+        if (image) {
+          this.imageElement.src = image
+        }
+      }
+
+      attributeChangedCallback(attrName, oldVal, newVal) {
+        switch (attrName) {
+          case 'image':
+            this.imageElement.src = newVal
+            break
+          case 'sound':
+            this.audioElement.src = newVal
+            break
+        }
       }
 
       play() {
-        this.audio.play()
+        this.audioElement.play()
       }
     }
     window.customElements.define('kawaii-character', KawaiiCharacter)
