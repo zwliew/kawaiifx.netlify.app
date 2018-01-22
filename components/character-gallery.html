@@ -15,6 +15,36 @@
     #previous:hover, #next:hover {
       cursor: pointer;
     }
+
+    #character-container {
+      margin-bottom: 1rem;
+    }
+
+    @keyframes tada {
+      from {
+        transform: scale3d(1, 1, 1);
+      }
+
+      10%, 20% {
+        transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+      }
+
+      30%, 50%, 70%, 90% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+      }
+
+      40%, 60%, 80% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+      }
+
+      to {
+        transform: scale3d(1, 1, 1);
+      }
+    }
+
+    .tada {
+      animation-name: tada;
+    }
   </style>
 
   <section id="container">
@@ -35,12 +65,8 @@
     const template = importee.querySelector('template').content
 
     class CharacterGallery extends HTMLElement {
-      constructor() {
-        super()
-      }
-
-      connectedCallback() {
-        const shadowRoot = this.attachShadow({ mode: 'open' })
+      async connectedCallback() {
+        const shadowRoot = this.attachShadow({ mode: 'closed' })
         const clone = importer.importNode(template, true)
         shadowRoot.appendChild(clone)
 
@@ -49,34 +75,65 @@
         this.previous = shadowRoot.getElementById('previous')
         this.next = shadowRoot.getElementById('next')
 
-        this.character.addEventListener('click', this.play.bind(this))
-        this.previous.addEventListener('click', this.switchCharacter.bind(this, 0))
-        this.next.addEventListener('click', this.switchCharacter.bind(this, 1))
-
-        this.switchCharacter(0)
+        await this.populateCharacters()
+        this.setupListeners()
+        this.switchCharacter()
       }
 
-      switchCharacter(index) {
-        switch (index) {
-          case 0:
-            this.character.setAttribute('image', 'images/nico.png')
-            this.character.setAttribute('audio', 'audio/nico.mp3')
-            break
-          case 1:
-            this.character.setAttribute('image', 'images/mayuri.png')
-            this.character.setAttribute('audio', 'audio/mayuri.mp3')
-            break
+      async populateCharacters() {
+        const file = this.getAttribute('characters')
+        const response = await fetch(file)
+        const characters = await response.json()
+        this.characters = characters.characters
+        this.maxIndex = this.characters.length - 1
+        this.curIndex = 0
+      }
+
+      setupListeners() {
+        this.character.addEventListener('click', this.play.bind(this))
+        this.previous.addEventListener('click', () => {
+          this.prevIndex()
+          this.switchCharacter()
+        })
+        this.next.addEventListener('click', () => {
+          this.nextIndex()
+          this.switchCharacter()
+        })
+      }
+
+      nextIndex() {
+        if (this.curIndex === this.maxIndex) {
+          this.curIndex = 0
+        } else {
+          ++this.curIndex
         }
+      }
+
+      prevIndex() {
+        if (this.curIndex === 0) {
+          this.curIndex = this.maxIndex
+        } else {
+          --this.curIndex
+        }
+      }
+
+      switchCharacter() {
+        const newCharacter = this.characters[this.curIndex]
+        this.character.setAttribute('image', newCharacter.image)
+        this.character.setAttribute('audio', newCharacter.audio)
+        this.characterContainer.style['animation-duration'] = newCharacter.duration + 'ms'
       }
 
       play() {
         this.character.play()
-        this.characterContainer.classList.add('animated')
+        this.animateCharacter()
+      }
+
+      animateCharacter() {
         this.characterContainer.classList.add('tada')
         setTimeout(() => {
-          this.characterContainer.classList.remove('animated')
           this.characterContainer.classList.remove('tada')
-        }, 1000)
+        }, this.characters[this.curIndex].duration)
       }
     }
     window.customElements.define('character-gallery', CharacterGallery)

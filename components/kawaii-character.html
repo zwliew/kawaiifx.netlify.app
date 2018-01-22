@@ -25,12 +25,8 @@
         ]
       }
 
-      constructor() {
-        super()
-      }
-
       connectedCallback() {
-        const shadowRoot = this.attachShadow({ mode: 'open' })
+        const shadowRoot = this.attachShadow({ mode: 'closed' })
         const clone = importer.importNode(template, true)
         shadowRoot.appendChild(clone)
 

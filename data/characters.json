@@ -2,7 +2,7 @@
   "characters": [
     {
       "name": "mayuri",
-      "sound": "sounds/mayuri.mp3",
+      "audio": "audio/mayuri.mp3",
       "image": "images/mayuri.png",
       "primary": "#f6e4cb",
       "secondary": "#748990",
@@ -10,7 +10,7 @@
     },
     {
       "name": "nico",
-      "sound": "sounds/nico.mp3",
+      "audio": "audio/nico.mp3",
       "image": "images/nico.png",
       "primary": "#d4465e",
       "secondary": "#a0a1a7",
