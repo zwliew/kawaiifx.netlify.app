@@ -3,16 +3,16 @@ import { LitElement, html, customElement } from 'lit-element';
 const CHARACTERS = [
   {
     name: 'mayuri',
-    audio: 'audio/mayuri.mp3',
-    image: 'images/mayuri.png',
+    audio: 'src/audio/mayuri.mp3',
+    image: 'src/images/mayuri.png',
     primary: '#f6e4cb',
     secondary: '#748990',
     duration: '1000',
   },
   {
     name: 'nico',
-    audio: 'audio/nico.mp3',
-    image: 'images/nico.png',
+    audio: 'src/audio/nico.mp3',
+    image: 'src/images/nico.png',
     primary: '#d4465e',
     secondary: '#a0a1a7',
     duration: '2000',
