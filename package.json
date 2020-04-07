@@ -1,10 +1,11 @@
 {
-  "name": "start-lit-element",
+  "name": "kawaiifx",
   "version": "1.0.0",
-  "description": "start-lit-element",
-  "repository": "https://github.com/PolymerLabs/start-lit-element.git",
-  "main": "start-lit-element.js",
+  "description": "KawaiiFX",
+  "repository": "https://github.com/zwliew/KawaiiFX.git",
+  "main": "src/my-app.js",
   "scripts": {
+    "build": "polymer build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "The Polymer Authors",
@@ -12,5 +13,8 @@
   "dependencies": {
     "@webcomponents/webcomponentsjs": "latest",
     "lit-element": "latest"
+  },
+  "devDependencies": {
+    "polymer-cli": "^1.9.11"
   }
 }
