@@ -19,6 +19,7 @@ export class MyApp extends LitElement {
 
       <custom-header>(〃＾▽＾〃)</custom-header>
       <character-gallery> </character-gallery>
+      <custom-footer></custom-footer>
     `;
   }
 }

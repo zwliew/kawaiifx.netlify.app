@@ -4,7 +4,8 @@
   "fragments": [
     "src/character-gallery.js",
     "src/custom-header.js",
-    "src/kawaii-character.js"
+    "src/kawaii-character.js",
+    "src/custom-footer.js"
   ],
   "npm": true,
   "moduleResolution": "node",
