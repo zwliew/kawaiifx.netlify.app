@@ -9,19 +9,50 @@ export class KawaiiCharacter extends LitElement {
     };
   }
 
+  constructor() {
+    super();
+
+    this.playing = false;
+  }
+
   play() {
+    if (this.playing) {
+      return;
+    }
+
     if (!this.audioEl) {
       this.audioEl = this.shadowRoot.getElementById('audio');
     }
-    if (!this.container) {
-      this.container = this.shadowRoot.getElementById('container');
+    if (!this.containerEl) {
+      this.containerEl = this.shadowRoot.getElementById('container');
     }
 
+    this.playing = true;
     this.audioEl.play();
-    this.container.classList.add('tada', 'animated');
-    setTimeout(() => {
-      this.container.classList.remove('tada', 'animated');
+    this.containerEl.classList.add('tada', 'animated');
+    this.timeoutId = setTimeout(() => {
+      this.reset();
     }, this.duration);
+  }
+
+  attributeChangedCallback(name, oldVal, newVal) {
+    super.attributeChangedCallback(name, oldVal, newVal);
+
+    if (['image', 'audio', 'duration'].includes(name)) {
+      this.reset();
+    }
+  }
+
+  reset() {
+    clearTimeout(this.timeoutId);
+    if (this.containerEl) {
+      this.containerEl.classList.remove('tada', 'animated');
+    }
+    if (this.audioEl) {
+      this.audioEl.currentTime = 0;
+      this.audioEl.pause();
+    }
+    this.playing = false;
   }
 
   render() {

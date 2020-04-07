@@ -7,7 +7,7 @@ const CHARACTERS = [
     image: 'src/images/mayuri.png',
     primary: '#f6e4cb',
     secondary: '#748990',
-    duration: '1000',
+    duration: '1199',
   },
   {
     name: 'nico',
@@ -15,7 +15,7 @@ const CHARACTERS = [
     image: 'src/images/nico.png',
     primary: '#d4465e',
     secondary: '#a0a1a7',
-    duration: '2000',
+    duration: '2038',
   },
 ];
 
